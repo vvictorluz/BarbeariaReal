@@ -1,0 +1,497 @@
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* FORMATAÇÃO */
+    body, html {
+        width: 100%;
+        background-color: #111;       
+        color: #f5f5f5;               
+        font-size: large;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+    background: black;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 100;
+    border-bottom: #111 3px;
+    }
+
+
+    button.hamburguer{
+    width: 40px;
+    height: 25px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 101;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+    }
+
+    button.hamburguer:hover{
+        transform: translateX(2px);
+        color: transparent;
+    }
+
+    button span {
+    width: 100%;
+    height: 3px;
+    background: #ffffff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    display: block;
+    }
+
+    button.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    button.active span:nth-child(2) {
+    opacity: 0;
+    }
+
+    button.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+    }
+
+    nav.Menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 400px;
+    height: 100vh;
+    background: rgb(0, 0, 0);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+    transition: right 0.4s ease;
+    z-index: 99;
+    padding-top: 15%;
+    }
+
+    nav.active {
+    right: 0;
+    }
+
+    ul {
+    list-style: none;
+    }
+
+    li {
+    border-bottom: 1px solid #f0f0f0;
+        
+    }
+
+    a.MenuA {
+    display: block;
+    padding: 1.2rem 2rem;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    padding-block: 10%;
+    }
+
+    a.MenuA:hover {
+    background: linear-gradient(yellow, gold);
+    color: rgb(0, 0, 0);
+    padding-left: 2.5rem;
+    padding-block: 9%;
+    }
+
+    aside.Lateral {
+    position: fixed;
+    top: 50px;
+    width: fit-content;
+    height: fit-content;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    
+    }
+
+    aside.active {
+    opacity: 1;
+    visibility: visible;
+    }
+
+    .body-no-scroll {
+  overflow: hidden;
+  height: 100vh;
+  touch-action: none;
+}
+
+
+    /* IMAGENS CARROSSEL */
+    #imagem-barbearia {
+        width: 100%;
+        height: 650px;
+        object-fit: cover;
+    }
+
+    
+    .carrossel {
+    position: relative;
+    width: auto;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding-bottom: 1rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .carrossel-container {
+        position: relative;
+        width: 100%;
+        height: 550px;
+        overflow: hidden;
+        margin: 0;
+    }
+
+    .carrossel-image {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+        pointer-events: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .carrossel-image.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .carrossel-bot {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.01);
+        border: none;
+        color: #333;
+        font-size: 24px;
+        padding: 15px 20px;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        z-index: 10;
+        backdrop-filter: blur(5px);
+    }
+
+    .carrossel-bot:hover {
+        background: rgba(255, 255, 255, 1);
+        transform: translateY(-50%) scale(0.9);
+    }
+
+    .carrossel-bot:active {
+        transform: translateY(-50%) scale(0.95);
+    }
+
+    .carrossel-bot.ant {
+        left: 2px;
+    }
+
+    .carrossel-bot.prox {
+        right: 2px;
+    }
+
+    .carrossel-indicators {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 20px;
+    }
+
+    .indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0;
+    }
+
+    .indicator:hover {
+        border-color: rgba(255, 255, 255, 0.8);
+        transform: scale(1.2);
+    }
+
+    .indicator.active {
+        background: white;
+        border-color: white;
+        transform: scale(1.3);
+    }
+
+
+    /* INICIO DO SITE */
+    main{
+        display: flex;
+        flex-direction: column;
+        justify-items: flex-start;
+    }
+
+    /* OPÇÕES DA PARTE INICIAL */
+    #inicio{
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        background-color: white;
+        color: black;
+        border-bottom: #111 solid 5px;
+        width: auto;
+        text-align: center;
+        gap: 20px;
+    }
+
+    /* ORGANIZAÇÃO/FORMATO DO INICIO */
+    .FundoBemVindo{
+        /* PARA A IMAGEM DE FUNDO DO INICIO FICAR OPACA */
+        background-image: linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.60)), url(../assets/ImgFundoIndex/Inicio.jpeg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* LOGO INICIO */
+    #LogoBemVindo{
+        height: 15%;
+        width: 20%;
+    }
+
+    /* TEXTO INICIO */
+    #TextoBemVindo{
+        font-family: sans-serif;
+        margin: 5px;
+        padding: 2.5rem;
+        border-radius: 55px;
+        color: #fff;
+    }
+
+    /* COR NO PREMIUM DO TEXTO */
+    .Premium{
+        color: #d4af37;
+        padding: 5px;
+    }
+
+    /* COR NAS PALAVRAS DOS PARAGRAFOS */
+    .Premium1{
+        color: #bfa760;
+    }
+
+    a.LinkWhats{
+        color: #000;
+        text-decoration: none;
+    }
+
+    /* BOTÕES INICIO */
+    .Bot-Inicio{
+        background-color: #d4af37;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        padding: 10px 20px; 
+        
+        color: black;
+    }
+
+    .Bot-Inicio:hover {
+        background-color: #a38111;  
+        transition: all 0.5s ease;     
+    }
+
+    a{
+        text-decoration: none;
+        color: black;
+    }
+
+    /* INICIO ABA DE SERVIÇOS */
+    #Servicos{
+        padding: 2rem;
+        background-color: white;
+        color: black; 
+        text-align: center;
+    }
+
+    /* ORGANIZAÇÃO/FORMATO DA LISTA DE SERVIÇOS */
+    #Servicos-ul{
+        list-style-type: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 2fr));
+        justify-items: center;
+        align-items: center;
+    }
+
+    /* ITENS INDIVIDUAIS DA LISTA DE SERVIÇOS */
+    .Servicos-li{
+        background-color: #f5f5f5;
+        border-radius: 15px;
+        padding: 20px;
+        border: #d4af37 solid 2px;
+        text-align: center;
+        margin: 20px;
+    }
+
+    /* INICIO ABA DE POR QUE ESCOLHER A BARBEARIA REAL */
+    #PorQue{
+        background-image: linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.60)), url(../assets/ImgFundoIndex/PorQue.jpeg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 3rem;
+        min-height: 400px;
+        color: white;
+    }
+
+    #PorQueH2{
+        color: #d4af37;
+        padding: 5px;
+    }
+
+    /* ORGANIZAÇÃO/FORMATO DA LISTA DE POR QUE ESCOLHER A BARBEARIA REAL */
+    #PorQue-ul{
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-end;
+        margin: 0;
+        padding: 1rem;
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+
+    /* ITENS INDIVIDUAIS DA LISTA DE POR QUE ESCOLHER A BARBEARIA REAL */
+    .PorQue-li{
+        padding: 12px;
+        border: #d4af37 solid 2px;
+        margin: 0;
+        box-sizing: border-box;
+        text-align: right;
+        background: transparent;
+    }
+
+    /* INICIO ABA DE CONTATO */
+    #contato{
+        padding: 2rem;
+        background-color: #111;
+        color: #f5f5f5; 
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+
+    section {
+        justify-content: center;
+    }
+
+    #iframe{
+        width: 55%;
+         height: 250px;
+    }
+
+    footer {
+      text-align: center;
+      color: #bfa760;
+      padding: 15px;
+      background-color: #000;
+    }
+
+
+@media (max-width: 670px){
+
+    .Hamburguer{
+        display: block;
+
+    }
+
+
+    /* ORGANIZAÇÃO/FORMATO DO INICIO */
+    .FundoBemVindo{
+        /* PARA A IMAGEM DE FUNDO DO INICIO FICAR OPACA */
+        background-image: linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.60)), url(../assets/ImgFundoIndex/Inicio.jpeg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        display: block; 
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    #Servicos-ul{
+        list-style-type: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(80%, 2fr));
+        justify-items: center;
+        align-items: center;
+    }
+
+    #PorQue{
+        background-image: linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.60)), url(../assets/ImgFundoIndex/PorQue.jpeg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: block;
+        align-items: center;
+        justify-content: flex-end;
+        
+        min-height: 400px;
+        color: white;
+    }
+
+    #PorQueH2{
+        color: #d4af37;
+        padding: 5px;
+        text-align: center;
+    }
+
+     /* ORGANIZAÇÃO/FORMATO DA LISTA DE POR QUE ESCOLHER A BARBEARIA REAL */
+    #PorQue-ul{
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        margin: 0;
+        
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+
+       /* ITENS INDIVIDUAIS DA LISTA DE POR QUE ESCOLHER A BARBEARIA REAL */
+    .PorQue-li{
+        padding: 12px;
+        border: #d4af37 solid 2px;
+        margin: 0;
+        box-sizing: border-box;
+        text-align: center;
+        background: transparent;
+    }
+
+    #iframe{
+        width: 60%;
+        height: 25%;
+    }
+}
