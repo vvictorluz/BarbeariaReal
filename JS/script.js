@@ -32,8 +32,8 @@ menuLinks.forEach(link => {
 // Seleção de elementos
 const images = document.querySelectorAll('.carrossel-image');
 const indicators = document.querySelectorAll('.indicator');
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.ant');
+const nextBtn = document.querySelector('.prox');
 
 let currentIndex = 0;
 let autoPlayInterval;
